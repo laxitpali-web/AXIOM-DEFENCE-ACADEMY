@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Shield, ArrowRight, MessageSquare, Award, Star, CheckCircle, Users } from 'lucide-react';
 
 interface HeroProps {
@@ -7,15 +7,39 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenEnquiry, setActiveTab }: HeroProps) {
+  const backgrounds = ['/hero-bg1.png', '/hero-bg2.png'];
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % backgrounds.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-brand-navy text-white min-h-[90vh] flex flex-col justify-center">
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-35 mix-blend-luminosity bg-no-repeat transition-all duration-700 pointer-events-none"
-        style={{ 
-          backgroundImage: `url('https://static.wixstatic.com/media/14d0b9_412d5776f4c64fe68b1e301edcd74da2~mv2_d_3556_1472_s_2.jpg')` 
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark via-brand-navy/90 to-brand-navy-dark/75 z-0 pointer-events-none" />
+      {/* Background Images Cinematic Slideshow */}
+      {backgrounds.map((bg, idx) => (
+        <div 
+          key={bg}
+          className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-[1200ms] ease-in-out pointer-events-none ${
+            idx === bgIndex 
+              ? 'opacity-65 scale-100' 
+              : 'opacity-0 scale-105'
+          }`}
+          style={{ 
+            backgroundImage: `url('${bg}')`,
+            transitionProperty: 'opacity, transform',
+          }}
+        />
+      ))}
+
+      {/* Cinematic Dual-Axis Gradient Masks to protect text & elements */}
+      {/* 1. Left-to-Right mask to anchor readability on left-hand content */}
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-dark/95 via-brand-navy-dark/80 to-transparent z-0 pointer-events-none" />
+      {/* 2. Bottom-to-Top mask to smoothly blend Hero base into the navy page background */}
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark via-brand-navy-dark/40 to-transparent z-0 pointer-events-none" />
 
       {/* Grid Pattern overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
@@ -150,6 +174,22 @@ export default function Hero({ onOpenEnquiry, setActiveTab }: HeroProps) {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Interactive Background Slide Indicators */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {backgrounds.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setBgIndex(idx)}
+            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === bgIndex 
+                ? 'w-8 bg-brand-gold shadow-lg shadow-brand-gold/30' 
+                : 'w-2 bg-white/30 hover:bg-white/50'
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
