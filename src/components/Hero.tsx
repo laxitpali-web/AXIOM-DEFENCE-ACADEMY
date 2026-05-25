@@ -9,14 +9,13 @@ interface HeroProps {
 export default function Hero({ onOpenEnquiry, setActiveTab }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-brand-navy text-white min-h-[90vh] flex flex-col justify-center">
-      {/* Background visual graphics - Modern aesthetic */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-referrer opacity-15 mix-blend-color-dodge bg-no-repeat transition-all duration-700 pointer-events-none"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-35 mix-blend-luminosity bg-no-repeat transition-all duration-700 pointer-events-none"
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1590172545543-cf74c2df4794?q=80&w=1200')` 
+          backgroundImage: `url('https://static.wixstatic.com/media/14d0b9_412d5776f4c64fe68b1e301edcd74da2~mv2_d_3556_1472_s_2.jpg')` 
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark via-brand-navy/80 to-brand-navy-dark/60 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark via-brand-navy/90 to-brand-navy-dark/75 z-0 pointer-events-none" />
 
       {/* Grid Pattern overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
