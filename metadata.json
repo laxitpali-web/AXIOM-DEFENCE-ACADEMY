@@ -1,0 +1,6 @@
+{
+  "name": "Axiom Defence Academy Jaipur",
+  "description": "A premium modern redesign for Axiom Defence Academy Jaipur — North India's premier institute for NDA, CDS, AFCAT, and SSB Interview preparation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

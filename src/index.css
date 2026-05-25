@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", "Space Grotesk", sans-serif;
+  
+  --color-brand-navy: #002147;
+  --color-brand-navy-light: #002e62;
+  --color-brand-navy-dark: #001530;
+  
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #e5c55b;
+  --color-brand-gold-dark: #b38f1e;
+  
+  --color-brand-olive: #4B5320;
+  --color-brand-olive-light: #5d6728;
+  --color-brand-olive-dark: #323715;
+}
