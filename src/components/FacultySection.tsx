@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, GraduationCap, Users } from 'lucide-react';
 import { FACULTY_MEMBERS } from '../data';
+import { GlowCard } from './ui/spotlight-card';
 
 interface FacultySectionProps {
   onOpenEnquiry: () => void;
@@ -32,8 +33,10 @@ export default function FacultySection({ onOpenEnquiry, hideHeader = false }: Fa
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {FACULTY_MEMBERS.map((faculty, idx) => {
             return (
-              <div 
+              <GlowCard 
                 key={idx} 
+                glowColor="orange"
+                customSize={true}
                 className="bg-brand-navy-dark border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group hover:border-brand-gold/40 transition-all duration-300"
               >
                 {/* Decorative Cadet Background Stripes */}
@@ -95,7 +98,7 @@ export default function FacultySection({ onOpenEnquiry, hideHeader = false }: Fa
                   </div>
                 </div>
 
-              </div>
+              </GlowCard>
             );
           })}
         </div>
