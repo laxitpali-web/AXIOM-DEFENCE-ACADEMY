@@ -7,7 +7,10 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenEnquiry, setActiveTab }: HeroProps) {
-  const backgrounds = ['/hero-bg1.png', '/hero-bg2.png'];
+  const backgrounds = [
+    { url: '/hero-bg1.png', pos: 'bg-[position:70%_top] md:bg-center' },
+    { url: '/hero-bg2.png', pos: 'bg-[position:50%_top] md:bg-center' }
+  ];
   const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
@@ -19,17 +22,17 @@ export default function Hero({ onOpenEnquiry, setActiveTab }: HeroProps) {
 
   return (
     <section className="relative overflow-hidden bg-brand-navy text-white min-h-[90vh] flex flex-col justify-center">
-      {/* Background Images Cinematic Slideshow */}
+      {/* Background Backgrounds Cinematic Slideshow */}
       {backgrounds.map((bg, idx) => (
         <div 
-          key={bg}
-          className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-[1200ms] ease-in-out pointer-events-none ${
+          key={bg.url}
+          className={`absolute top-0 left-0 right-0 h-[65vh] md:h-full z-0 bg-cover ${bg.pos} bg-no-repeat transition-all duration-[1200ms] ease-in-out pointer-events-none ${
             idx === bgIndex 
               ? 'opacity-65 scale-100' 
               : 'opacity-0 scale-105'
           }`}
           style={{ 
-            backgroundImage: `url('${bg}')`,
+            backgroundImage: `url('${bg.url}')`,
             transitionProperty: 'opacity, transform',
           }}
         />
@@ -39,7 +42,9 @@ export default function Hero({ onOpenEnquiry, setActiveTab }: HeroProps) {
       {/* 1. Left-to-Right mask to anchor readability on left-hand content */}
       <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-dark/95 via-brand-navy-dark/80 to-transparent z-0 pointer-events-none" />
       {/* 2. Bottom-to-Top mask to smoothly blend Hero base into the navy page background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark via-brand-navy-dark/40 to-transparent z-0 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-[65vh] md:h-full bg-gradient-to-t from-brand-navy-dark via-brand-navy-dark/40 to-transparent z-0 pointer-events-none" />
+      {/* 3. Section blend overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark via-transparent to-transparent z-0 pointer-events-none" />
 
       {/* Grid Pattern overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] opacity-10 z-0 pointer-events-none" />
